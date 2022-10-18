@@ -22,9 +22,11 @@ namespace RecursosHumanosGithub._Repository
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = @"insert into Employee_Github 
-                        values (@EmployeeId,@Login,@Githubid,@Url,@Type,@Name,@Company,@Blog,@Location
-                       ,@Email,@Bio,@PublicRepos,@Followers,@Following,@CreatedAt,@UpdatedAt)";
+                command.CommandText = @"insert into
+                        Employee_Github 
+                        values 
+                        (@EmployeeId,@Login,@Githubid,@Url,@Type,@Name,@Company,@Blog,@Location,
+                        @Email,@Bio,@PublicRepos,@Followers,@Following,@CreatedAt,@UpdatedAt)";
                 command.Parameters.Add("@EmployeeId", SqlDbType.Int).Value = github.EmployeeId;
                 command.Parameters.Add("@Login", SqlDbType.NVarChar).Value = github.Login;
                 command.Parameters.Add("@Githubid", SqlDbType.Int).Value = github.Githubid;
@@ -59,23 +61,23 @@ namespace RecursosHumanosGithub._Repository
                     while (reader.Read())
                     {
                         var github = new Github();
-                        github.Id = (int)reader[0];
-                        github.EmployeeId = (int)reader[1];
-                        github.Login = reader[2].ToString();
-                        github.Githubid = (int)reader[3];
-                        github.Url = reader[4].ToString();
-                        github.Type = reader[5].ToString();
-                        github.Name = reader[6].ToString();
-                        github.Company = reader[7].ToString();
-                        github.Blog = reader[8].ToString();
-                        github.Location = reader[9].ToString();
-                        github.Email = reader[10].ToString();
-                        github.Bio = reader[11].ToString();
+                        github.Id          = (int)reader[0];
+                        github.EmployeeId  = (int)reader[1];
+                        github.Login       = reader[2].ToString();
+                        github.Githubid    = (int)reader[3];
+                        github.Url         = reader[4].ToString();
+                        github.Type        = reader[5].ToString();
+                        github.Name        = reader[6].ToString();
+                        github.Company     = reader[7].ToString();
+                        github.Blog        = reader[8].ToString();
+                        github.Location    = reader[9].ToString();
+                        github.Email       = reader[10].ToString();
+                        github.Bio         = reader[11].ToString();
                         github.PublicRepos = (int)reader[12];
-                        github.Followers = (int)reader[13];
-                        github.Following = (int)reader[14];
-                        github.CreatedAt = (DateTime)reader[15];
-                        github.UpdatedAt = (DateTime)reader[16];
+                        github.Followers   = (int)reader[13];
+                        github.Following   = (int)reader[14];
+                        github.CreatedAt   = (DateTime)reader[15];
+                        github.UpdatedAt   = (DateTime)reader[16];
                         githubList.Add(github);
                     }
                 };
